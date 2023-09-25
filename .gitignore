@@ -1,5 +1,11 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# General
+*.log
+*.bak
+*.tmp
+logs
+
 # Compiled output
 /dist
 /tmp
@@ -11,6 +17,9 @@
 npm-debug.log
 yarn-error.log
 
+# JetBrains
+cmake-build-*/
+
 # IDEs and editors
 .idea/
 .project
@@ -19,6 +28,14 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+
+# Javascript / Typescript
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+node_modules
 
 # Visual Studio Code
 .vscode/*
