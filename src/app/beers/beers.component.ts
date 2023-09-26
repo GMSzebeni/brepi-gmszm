@@ -8,6 +8,7 @@ import { BeersDataService } from '../beers-data.service';
 })
 export class BeersComponent implements OnInit{
   beers: any[] = [];
+  pages: number[] = [];
   currentPage = 1;
   itemsPerPage = 6;
   status: string = 'loading';
@@ -23,6 +24,12 @@ export class BeersComponent implements OnInit{
       .getBeers(this.currentPage, this.itemsPerPage)
         .subscribe(data => {
           this.beers = data;
+          this.pages = [
+            this.currentPage, 
+            this.currentPage + 1, 
+            this.currentPage + 2, 
+            this.currentPage + 3, 
+            this.currentPage + 4]
         });
   }
 
@@ -31,6 +38,11 @@ export class BeersComponent implements OnInit{
       this.currentPage++;
       this.loadBeers();
     }
+  }
+
+  toPage(page: number): void {
+    this.currentPage += page - this.currentPage;
+    this.loadBeers();
   }
 
   prevPage(): void {
