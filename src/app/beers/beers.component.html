@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <title>Beers</title>
 </head>
 <body>
@@ -16,19 +19,48 @@
                     alt="{{ beer.name }}"/>
                 </div>
                 <div>
-                    <p class="beer-description" [hidden]="!beer.showDescription">{{ beer.description }}</p>
+                    <p 
+                        class="beer-description" 
+                        [hidden]="!beer.showDescription">
+                        {{ beer.description }}
+                    </p>
                 </div>
                 <h3 class="beer-name">{{ beer.name }}</h3>
             </div>
         </div>
         <div class="pagination">
-            <button (click)="firstPage()" [disabled]="currentPage === 1">First</button>
-            <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <button 
+                class="button-text"
+                (click)="firstPage()" 
+                [disabled]="currentPage === 1">
+                First
+            </button>
+            <button 
+                class="button-text" 
+                (click)="prevPage()"
+                [disabled]="currentPage === 1">
+                Previous
+            </button>
             <span *ngFor="let page of pages">
-                <button (click)="toPage(page)" [hidden]="page >= 55">{{ page }}</button>
+                <button 
+                    class="button-numbers"
+                    (click)="toPage(page)" 
+                    [hidden]="page >= 55">
+                    {{ page }}
+                </button>
             </span>
-            <button (click)="nextPage()" [disabled]="currentPage === 55">Next</button>
-            <button (click)="lastPage()" [disabled]="currentPage === 55">Last</button>
+            <button 
+                class="button-text" 
+                (click)="nextPage()" 
+                [disabled]="currentPage === 55">
+                Next
+            </button>
+            <button 
+                class="button-text" 
+                (click)="lastPage()" 
+                [disabled]="currentPage === 55">
+                Last
+            </button>
         </div>
     </div>
 </body>
