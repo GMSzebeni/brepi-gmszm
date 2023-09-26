@@ -33,6 +33,11 @@ export class BeersComponent implements OnInit{
         });
   }
 
+  firstPage(): void {
+    this.currentPage -= this.currentPage - 1;
+    this.loadBeers();
+  }
+
   nextPage(): void {
     if (this.currentPage < 55) {
       this.currentPage++;
@@ -50,5 +55,10 @@ export class BeersComponent implements OnInit{
       this.currentPage--;
       this.loadBeers();
     }
+  }
+
+  lastPage(): void {
+    this.currentPage += 55 - this.currentPage;
+    this.loadBeers();
   }
 }

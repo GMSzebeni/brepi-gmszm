@@ -12,11 +12,13 @@
         </div>
     </div>
     <div class="pagination">
+        <button (click)="firstPage()" [disabled]="currentPage === 1">First</button>
         <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
         <span *ngFor="let page of pages">
             <button (click)="toPage(page)" [hidden]="page >= 55">{{ page }}</button>
         </span>
         <button (click)="nextPage()" [disabled]="currentPage === 55">Next</button>
+        <button (click)="lastPage()" [disabled]="currentPage === 55">Last</button>
       </div>
 </body>
 </html>
