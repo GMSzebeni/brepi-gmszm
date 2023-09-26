@@ -6,19 +6,30 @@
     <title>Beers</title>
 </head>
 <body>
-    <div>
-        <div *ngFor="let beer of beers">
-            <h3>{{ beer.name }}</h3>
+    <div class="beer-page">
+        <div class="beer-tiles">
+            <div class="beer-tile" *ngFor="let beer of beers" (click)="toggleDescription(beer)">
+                <div [hidden]="beer.showDescription">
+                    <img
+                    class="beer-imgs"
+                    src="{{ beer.image_url }}"
+                    alt="{{ beer.name }}"/>
+                </div>
+                <div>
+                    <p class="beer-description" [hidden]="!beer.showDescription">{{ beer.description }}</p>
+                </div>
+                <h3 class="beer-name">{{ beer.name }}</h3>
+            </div>
+        </div>
+        <div class="pagination">
+            <button (click)="firstPage()" [disabled]="currentPage === 1">First</button>
+            <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span *ngFor="let page of pages">
+                <button (click)="toPage(page)" [hidden]="page >= 55">{{ page }}</button>
+            </span>
+            <button (click)="nextPage()" [disabled]="currentPage === 55">Next</button>
+            <button (click)="lastPage()" [disabled]="currentPage === 55">Last</button>
         </div>
     </div>
-    <div class="pagination">
-        <button (click)="firstPage()" [disabled]="currentPage === 1">First</button>
-        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-        <span *ngFor="let page of pages">
-            <button (click)="toPage(page)" [hidden]="page >= 55">{{ page }}</button>
-        </span>
-        <button (click)="nextPage()" [disabled]="currentPage === 55">Next</button>
-        <button (click)="lastPage()" [disabled]="currentPage === 55">Last</button>
-      </div>
 </body>
 </html>
