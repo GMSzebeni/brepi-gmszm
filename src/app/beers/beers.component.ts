@@ -11,7 +11,6 @@ export class BeersComponent implements OnInit{
   pages: number[] = [];
   currentPage = 1;
   itemsPerPage = 6;
-  status: string = 'loading';
 
   constructor(private beersDataService: BeersDataService) {}
 
@@ -29,8 +28,19 @@ export class BeersComponent implements OnInit{
             this.currentPage + 1, 
             this.currentPage + 2, 
             this.currentPage + 3, 
-            this.currentPage + 4]
+            this.currentPage + 4
+          ];
+          this.beers.forEach(beer => (beer.showDescription = false));
         });
+  }
+
+  toggleDescription(beer : any): void {
+    beer.showDescription = !beer.showDescription;
+    this.beers.forEach(otherBeer => {
+      if (otherBeer !== beer) {
+        otherBeer.showDescription = false;
+      }
+    })
   }
 
   firstPage(): void {
